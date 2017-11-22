@@ -1,12 +1,64 @@
 <html>
+  <head>
+    <title>My First Project!</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css">
+    <style type="text/css">
+      body{
+        /*background-color: #00897b;*/
+        /*color: #fff;*/
+        font-family: 'arial', sans-serif;
+        font-size: 40px;
+      }
+      .div-container{
+        position: absolute;
+        top: 40%;
+        left: 10%;
+      }
+      .nextDiv{
+        position: absolute;
+        top: 85%;
+        left: 80%;
+      }
+      .nextBtn{
+        padding: 20px;
+      }
+    </style>
+  </head>
   <body>
-    <span class="type-it"></span>
+    <div class="div-container">
+      <span id="type-it"></span>
+    </div>
+
+    <div class="nextDiv">
+      <button class="btn btn-info nextBtn">
+        <span class="glyphicon glyphicon-menu-right"></span>
+      </button>
+    </div>
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/typeit@4.4.1/dist/typeit.min.js"></script>
   <script>
-      $('.type-it').typeIt({
-        strings: ["Hi! I'm Mervin", 'Another string!']
+      $(document).ready(function(){
+        $('.nextDiv').hide();
+        $('#type-it').typeIt({
+          speed: 80,
+          lifeLike: true,
+          breakLines: false,
+          strings: ["Yohooo. . . &#x263A;!", "Hi, I'm Mervin Villaceran."]
+        })
+        .tiBreak()
+        .tiType('&nbsp;A Web Developer')
+        .tiDelete(15)
+        .tiType('... from Cebu, Philippines <img src="https://www.shareicon.net/download/2016/08/18/815715_world_512x512.png" height="40px" width="40px"/>');
+
+        setInterval(function(){ 
+            $('.nextDiv').show("slow");
+        }, 8200);
+
+        function nextButton(){
+          $('#type-it').typeIt({}).tiEmpty();
+        }        
       });
   </script>
 </htlm>
